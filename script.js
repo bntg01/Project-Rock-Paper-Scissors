@@ -8,6 +8,8 @@ function getComputerChoice() {
         return "Scissors";
     }
 }
+let playerWins = 0;
+let computerWins = 0;
 
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase()
@@ -16,26 +18,39 @@ function playRound(playerSelection, computerSelection) {
         case "rock|rock":
             return "Tie! You both chose Rock!";
         case "rock|paper":
+            computerWins++;
             return "You Lose! Paper beats Rock";
         case "rock|scissors":
+            playerWins++;
             return "You Win! Rock beats Scissors!";
         case "paper|rock":
+            playerWins++;
             return "You Win! Paper beats Rock!";
         case "paper|paper":
-            return "Tie! You both chose Rock!";
+            return "Tie! You both chose Paper!";
         case "paper|scissors":
+            computerWins++;
             return "You Lose! Scissors beats Paper!";
         case "scissors|rock":
+            computerWins++;
             return "You Lose! Rock beats Scissors!";
         case "scissors|paper":
-            return "You Win! Scissors beats paper!";
+            playerWins++;
+            return "You Win! Scissors beats Paper!";
         case "scissors|scissors":
-            return "Tie! You both chose Rock!";
+            return "Tie! You both chose Scissors!";
         default:
             return "Invalid User Input";
     }
 }
 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+function game() {
+    for (let i = 0; i<5; i++) {
+        let playerSelection = prompt("Choose Rock, Paper, or Scissors.");
+        let computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
+        console.log(`Player Wins: ${playerWins} | Computer Wins: ${computerWins}`)
+    }
+    playerWins = 0;
+    computerWins = 0;
+}
