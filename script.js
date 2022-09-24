@@ -59,8 +59,15 @@ function playRound(playerSelection, computerSelection) {
 function game(playerSelection) {
     let computerSelection = getComputerChoice();
     div.textContent = playRound(playerSelection, computerSelection) + "\r\n";
-    div.textContent += `Player Wins: ${playerWins} | Computer Wins: ${computerWins}`;
-    
-    //playerWins = 0;
-    //computerWins = 0;
+    div.textContent += `Player Wins: ${playerWins} | Computer Wins: ${computerWins}\r\n`;
+    if (playerWins === 5) {
+        div.textContent += "You win!"
+        playerWins = 0;
+        computerWins = 0;
+    }
+    if (computerWins === 5) {
+        div.textContent += "You lose!"
+        playerWins = 0;
+        computerWins = 0;
+    }
 }
