@@ -6,6 +6,9 @@ rockButton.addEventListener("click", () => game("rock"))
 paperButton.addEventListener("click", () => game("paper"))
 scissorsButton.addEventListener("click", () => game("scissors"))
 
+const div = document.body.appendChild(document.createElement('div'));    
+div.setAttribute('style', 'white-space: pre;');
+
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3) + 1;
     if (choice === 1) {
@@ -55,9 +58,9 @@ function playRound(playerSelection, computerSelection) {
 
 function game(playerSelection) {
     let computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
-    console.log(`Player Wins: ${playerWins} | Computer Wins: ${computerWins}`)
-
-    playerWins = 0;
-    computerWins = 0;
+    div.textContent = playRound(playerSelection, computerSelection) + "\r\n";
+    div.textContent += `Player Wins: ${playerWins} | Computer Wins: ${computerWins}`;
+    
+    //playerWins = 0;
+    //computerWins = 0;
 }
