@@ -1,3 +1,11 @@
+const rockButton = document.getElementById("rock");
+const paperButton = document.getElementById("paper");
+const scissorsButton = document.getElementById("scissors");
+
+rockButton.addEventListener("click", () => game("rock"))
+paperButton.addEventListener("click", () => game("paper"))
+scissorsButton.addEventListener("click", () => game("scissors"))
+
 function getComputerChoice() {
     let choice = Math.floor(Math.random() * 3) + 1;
     if (choice === 1) {
@@ -8,6 +16,7 @@ function getComputerChoice() {
         return "Scissors";
     }
 }
+
 let playerWins = 0;
 let computerWins = 0;
 
@@ -44,13 +53,11 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
-    for (let i = 0; i<5; i++) {
-        let playerSelection = prompt("Choose Rock, Paper, or Scissors.");
-        let computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
-        console.log(`Player Wins: ${playerWins} | Computer Wins: ${computerWins}`)
-    }
+function game(playerSelection) {
+    let computerSelection = getComputerChoice();
+    console.log(playRound(playerSelection, computerSelection));
+    console.log(`Player Wins: ${playerWins} | Computer Wins: ${computerWins}`)
+
     playerWins = 0;
     computerWins = 0;
 }
